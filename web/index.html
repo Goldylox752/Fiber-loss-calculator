@@ -1,14 +1,28 @@
-function calculateLoss() {
-    const fibreLength = Number(
-        document.getElementById("fibreLength").value
-    );
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fibre Loss Calculator</title>
+</head>
 
-    const attenuation = Number(
-        document.getElementById("attenuation").value
-    );
+<body>
+    <h1>Fibre Loss Calculator</h1>
 
-    const fibreLoss = fibreLength * attenuation;
+    <label>Fibre Length (km):</label>
+    <input id="fibreLength" type="number" step="0.01">
 
-    document.getElementById("result").textContent =
-        "Total fibre loss: " + fibreLoss.toFixed(2) + " dB";
-}
+    <br><br>
+
+    <label>Attenuation (dB/km):</label>
+    <input id="attenuation" type="number" step="0.01">
+
+    <br><br>
+
+    <button onclick="calculateLoss()">
+        Calculate Loss
+    </button>
+
+    <h2 id="result">Total fibre loss: 0.00 dB</h2>
+
+    <script src="script.js"></script>
+</body>
+</html>
