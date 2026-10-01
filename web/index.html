@@ -1,125 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-  <meta
-    name="description"
-    content="Fiber Loss Calculator for calculating optical fiber loss in dB."
-  >
+    <meta
+        name="description"
+        content="Calculate fibre optic cable loss in decibels."
+    >
 
-  <title>Fiber Loss Calculator</title>
+    <title>Fiber Loss Calculator</title>
 
-  <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <main class="container">
+    <main class="container">
 
-    <h1>Fiber Loss Calculator</h1>
-
-    <p class="subtitle">
-      Calculate estimated fiber optic loss in decibels (dB).
-    </p>
-
-    <section class="calculator">
-
-      <label for="fiberLength">
-        Fiber Length (km)
-      </label>
-
-      <input
-        type="number"
-        id="fiberLength"
-        placeholder="Example: 5"
-        step="0.01"
-        min="0"
-      >
-
-      <label for="lossPerKm">
-        Fiber Loss (dB/km)
-      </label>
-
-      <input
-        type="number"
-        id="lossPerKm"
-        placeholder="Example: 0.35"
-        step="0.01"
-        min="0"
-      >
-
-      <label for="connectors">
-        Connector Loss (dB)
-      </label>
-
-      <input
-        type="number"
-        id="connectors"
-        placeholder="Example: 0.50"
-        step="0.01"
-        min="0"
-        value="0"
-      >
-
-      <label for="splices">
-        Splice Loss (dB)
-      </label>
-
-      <input
-        type="number"
-        id="splices"
-        placeholder="Example: 0.10"
-        step="0.01"
-        min="0"
-        value="0"
-      >
-
-      <button id="calculateButton">
-        Calculate Loss
-      </button>
-
-      <button id="resetButton" type="button">
-        Reset
-      </button>
-
-      <div class="result" id="result">
-        <h2>Total Fiber Loss</h2>
+        <h1>Fiber Loss Calculator</h1>
 
         <p>
-          <span id="totalLoss">0.00</span> dB
+            Calculate total fibre optic loss in dB.
         </p>
-      </div>
 
-    </section>
+        <section class="calculator">
 
-    <section class="info">
+            <label for="fibreLength">
+                Fibre Length (km)
+            </label>
 
-      <h2>How It Works</h2>
+            <input
+                type="number"
+                id="fibreLength"
+                placeholder="Example: 5"
+                step="0.01"
+                min="0"
+            >
 
-      <p>
-        Total fiber loss is estimated using the fiber length,
-        attenuation per kilometer, connector loss, and splice loss.
-      </p>
+            <label for="attenuation">
+                Attenuation (dB/km)
+            </label>
 
-      <p>
-        <strong>Formula:</strong>
-      </p>
+            <input
+                type="number"
+                id="attenuation"
+                placeholder="Example: 0.35"
+                step="0.01"
+                min="0"
+            >
 
-      <p>
-        Fiber Loss = Length × dB/km + Connector Loss + Splice Loss
-      </p>
+            <label for="spliceCount">
+                Number of Splices
+            </label>
 
-    </section>
+            <input
+                type="number"
+                id="spliceCount"
+                placeholder="Example: 4"
+                step="1"
+                min="0"
+            >
 
-  </main>
+            <label for="spliceLoss">
+                Loss per Splice (dB)
+            </label>
 
-  <script src="script.js"></script>
+            <input
+                type="number"
+                id="spliceLoss"
+                placeholder="Example: 0.10"
+                step="0.01"
+                min="0"
+            >
+
+            <label for="connectorCount">
+                Number of Connectors
+            </label>
+
+            <input
+                type="number"
+                id="connectorCount"
+                placeholder="Example: 2"
+                step="1"
+                min="0"
+            >
+
+            <label for="connectorLoss">
+                Loss per Connector (dB)
+            </label>
+
+            <input
+                type="number"
+                id="connectorLoss"
+                placeholder="Example: 0.50"
+                step="0.01"
+                min="0"
+            >
+
+            <button
+                type="button"
+                onclick="calculateLoss()"
+            >
+                Calculate Loss
+            </button>
+
+            <div id="result">
+                Total fibre loss: 0.00 dB
+            </div>
+
+        </section>
+
+        <section class="info">
+
+            <h2>Formula</h2>
+
+            <p>
+                Fibre Loss = Fibre Length × Attenuation
+            </p>
+
+            <p>
+                Splice Loss = Number of Splices × Loss per Splice
+            </p>
+
+            <p>
+                Connector Loss = Number of Connectors × Loss per Connector
+            </p>
+
+            <p>
+                <strong>
+                    Total Loss = Fibre Loss + Splice Loss + Connector Loss
+                </strong>
+            </p>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
 
 </body>
 </html>
